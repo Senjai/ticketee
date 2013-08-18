@@ -6,9 +6,9 @@ feature "Signing Up" do
 
     click_link 'Sign up'
     fill_in "Email", with: "user@example.com"
-    fill_in "Password", with: "hello"
-    fill_in "Password Confirmation", with: "hello"
-    click_button "Sign Up"
+    fill_in "user[password]", with: "hello"
+    fill_in "Password confirmation", with: "hello"
+    click_button "Sign up"
 
     expect(page).to have_content("You have signed up successfully.")
   end
