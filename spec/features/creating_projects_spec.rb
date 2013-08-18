@@ -22,6 +22,7 @@ feature 'Creating Projects' do
   end
 
   scenario "can not create a project without a name" do
+    fill_in "Name", with: ""
     click_button 'Create Project'
 
     expect(page).to have_content("Project has not been created.")

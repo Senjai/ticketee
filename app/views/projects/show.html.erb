@@ -1,2 +1,4 @@
 <% @title = "#{@project.name} - Projects - Ticketee" %>
 <h2><%= title @project.name, "Projects" %></h2>
+<%= link_to "Edit Project", edit_project_path(@project) %>
+<%= link_to "Delete Project", project_path(@project), method: :delete, data: {confirm: "Are you sure?"} %>
