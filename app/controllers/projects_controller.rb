@@ -1,4 +1,4 @@
-class ProjectsController < ApplicationController
+class ProjectsController < Admin::BaseController
   before_action :authorize_admin!, except: [:index, :show]
   before_action :set_project, only: SEUD
 
@@ -57,13 +57,5 @@ class ProjectsController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = "The project you were looking for could not be found."
     redirect_to projects_path
-  end
-
-  def authorize_admin!
-    require_signin!
-
-    unless current_user.admin?
-      redirect_to root_path, alert: "You must be an admin to do that."
-    end
   end
 end
