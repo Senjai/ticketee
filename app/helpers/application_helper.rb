@@ -6,4 +6,8 @@ module ApplicationHelper
       end
     end
   end
+
+  def admins_only(&block)
+    block.call if block_given? && current_user.try(:admin?)
+  end
 end
