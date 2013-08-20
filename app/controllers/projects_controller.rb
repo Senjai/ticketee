@@ -1,5 +1,5 @@
 class ProjectsController < Admin::BaseController
-  before_action :authorize_admin!, except: [:index, :show]
+  skip_before_action :authorize_admin!, only: [:index, :show]
   before_action :set_project, only: SEUD
 
   def index
