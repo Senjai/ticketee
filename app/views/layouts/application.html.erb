@@ -9,8 +9,16 @@
 <body>
 
 <nav>
-  <li><%= link_to "Sign up", new_user_path %></li>
-  <li><%= link_to "Sign in", signin_path %></li>
+  <% if current_user %>
+    Signed in as <%= current_user.email %>
+    <%= admins_only do %>
+      <%= link_to "Admin", admin_root_path %>
+    <% end %>
+  <% end %>
+  <ul>
+    <li><%= link_to "Sign up", new_user_path %></li>
+    <li><%= link_to "Sign in", signin_path %></li>
+  </ul>
 </nav>
 
 <% flash.each do |key, value| %>
