@@ -20,5 +20,10 @@
     <%= f.password_field :password %>
   </p>
 
+  <p>
+    <%= f.check_box :admin %>
+    <%= f.label :admin, "Admin?" %>
+  </p>
+
   <%= f.submit @user.persisted? ? "Update User" : "Create User" %>
 <% end %>
