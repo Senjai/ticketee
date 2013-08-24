@@ -8,15 +8,15 @@ class ApplicationController < ActionController::Base
   private
 
   def require_signin!
-      if current_user.nil?
-        flash[:error] = "You need to sign in or sign up before continuing."
-        redirect_to signin_url
-      end
+    if current_user.nil?
+      flash[:error] = "You need to sign in or sign up before continuing."
+      redirect_to signin_url
     end
-    helper_method :require_signin!
+  end
+  helper_method :require_signin!
 
-    def current_user
-      @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    end
-    helper_method :current_user
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+  helper_method :current_user
 end
