@@ -1,5 +1,6 @@
 class ProjectsController < Admin::BaseController
   skip_before_action :authorize_admin!, only: [:index, :show]
+  before_action :require_signin!, only: [:show]
   before_action :set_project, only: SEUD
 
   def index
@@ -53,7 +54,7 @@ class ProjectsController < Admin::BaseController
   end
 
   def set_project
-    @project = Project.find(params[:id])
+    @project = Project.viewable_by(current_user).find(params[:id])
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = "The project you were looking for could not be found."
     redirect_to projects_path
