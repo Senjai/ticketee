@@ -7,6 +7,8 @@ feature "Editing tickets" do
 
   before do
     define_permission!(user, "view", project)
+    define_permission!(user, "edit tickets", project)
+
     sign_in_as! user
 
     visit '/'
