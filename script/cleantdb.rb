@@ -8,7 +8,13 @@ if $stdin.gets.chomp.downcase == "y"
     # get the model class from the file basename
     model_class = model_file_basename.camelize.constantize
     # ask the model (ActiveRecord::Base subclass) to give you its table_name
-    table_name = model_class.table_name
+    begin
+      table_name = model_class.table_name
+    #This exception is triggered when a file in the model directory doesn't inherit
+    #from activerecord::base
+    rescue NoMethodError
+      next #Skip to the next model.
+    end
     # wipe the table
     puts "Wiping table #{table_name}.."
     ActiveRecord::Base.connection.execute "TRUNCATE TABLE #{table_name};"
