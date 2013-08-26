@@ -11,7 +11,7 @@ class Admin::PermissionsController < Admin::BaseController
     params[:permissions].each do |id, permissions|
       project = Project.find(id)
       permissions.each do |permission, checked|
-        Permission.create!(user: @user, thing: project, action: permission)
+        Permission.create!(user: @user, thing: project, action: permission) if checked == "1"
       end
     end
 
