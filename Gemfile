@@ -30,6 +30,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'cancan', '1.6.9'
+gem 'carrierwave', '0.8.0'
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
