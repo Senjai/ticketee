@@ -6,6 +6,10 @@ module CapybaraHelpers
   def assert_link_for(text)
     expect(page).to(have_css("a", text: text), "Expected to see the #{text.inspect} link, but did not.")
   end
+
+  def check_permission_box(permission, object)
+    check "permissions_#{object.id}_#{permission}"
+  end
 end
 
 RSpec.configure do |c|
