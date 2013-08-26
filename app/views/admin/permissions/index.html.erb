@@ -13,7 +13,8 @@
           <td><%= p.name %></td>
           <% permissions.each do |name, text| %>
             <td>
-              <%= check_box_tag "permissions[#{p.id}][#{name}]", @ability.can?(name.intern, p) %>
+              <%= check_box_tag "permissions[#{p.id}][#{name}]", @ability.can?(name.intern, p),
+                                                                 @ability.can?(name.intern, p) %>
             </td>
           <% end %>
         </tr>
