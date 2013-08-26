@@ -76,7 +76,7 @@ class TicketsController < ApplicationController
   end
 
   def authorize_destroy!
-    if !current_user.admin && cannot?("delete tickets".intern, @project)
+    if !current_user.admin? && cannot?("delete tickets".intern, @project)
       redirect_to @project, alert: "You cannot delete tickets from this project."
     end
   end
