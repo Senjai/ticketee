@@ -8,6 +8,7 @@
 
   def new
     @ticket = @project.tickets.build
+    3.times { @ticket.assets.build }
   end
 
   def index
@@ -30,8 +31,8 @@
   end
 
   def create
-    @ticket = @project.tickets.build(ticket_params)
-    @ticket.user = current_user
+    @ticket = @project.tickets.new(ticket_params)
+    @ticket.user_id = current_user.id
     if @ticket.save
       redirect_to [@project, @ticket], notice: "Ticket has been created."
     else
@@ -60,7 +61,7 @@
   end
 
   def ticket_params
-    params.require(:ticket).permit(:title, :description, :asset)
+    params.require(:ticket).permit(:title, :description, assets_attributes: [:asset])
   end
 
   def authorize_create!
