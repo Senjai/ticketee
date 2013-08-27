@@ -1,4 +1,4 @@
-class TicketsController < ApplicationController
+ class TicketsController < ApplicationController
   before_action :require_signin!
   before_action :set_project
   before_action :set_ticket, only: SEUD
@@ -60,7 +60,7 @@ class TicketsController < ApplicationController
   end
 
   def ticket_params
-    params.require(:ticket).permit(:title, :description)
+    params.require(:ticket).permit(:title, :description, :asset)
   end
 
   def authorize_create!
