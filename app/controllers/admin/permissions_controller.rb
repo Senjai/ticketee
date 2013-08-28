@@ -8,10 +8,12 @@ class Admin::PermissionsController < Admin::BaseController
 
   def set
     @user.permissions.clear
-    params[:permissions].each do |id, permissions|
-      project = Project.find(id)
-      permissions.each do |permission, checked|
-        Permission.create!(user: @user, thing: project, action: permission)
+    if(params[:permissions])
+      params[:permissions].each do |id, permissions|
+        project = Project.find(id)
+        permissions.each do |permission, checked|
+          Permission.create!(user: @user, thing: project, action: permission)
+        end
       end
     end
 
