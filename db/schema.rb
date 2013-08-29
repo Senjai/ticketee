@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130829185506) do
+ActiveRecord::Schema.define(version: 20130829214053) do
 
   create_table "assets", force: true do |t|
     t.integer  "ticket_id"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20130829185506) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "state_id"
+    t.integer  "previous_state_id"
   end
 
   create_table "permissions", force: true do |t|

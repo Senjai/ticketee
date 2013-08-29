@@ -53,7 +53,7 @@ feature "Creating Tickets" do
     attach_file "File #1", Rails.root.join("spec/fixtures/speed.txt")
 
     click_link "Add another file"
-    attach_file "File #2", Rails.root.join("spec/fixtures/spin.txt")
+    attach_file "File #2", Rails.root.join("spec/fixtures/spinre.txt")
 
     click_button "Create Ticket"
 
