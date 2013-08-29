@@ -16,6 +16,7 @@
   end
 
   def show
+    @comment = @ticket.comments.build
   end
 
   def edit

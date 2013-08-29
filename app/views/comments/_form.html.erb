@@ -1,0 +1,9 @@
+<strong>New Comment</strong>
+<%= @comment.errors if @comment.errors.any? %>
+<%= form_for [@ticket, @comment] do |f| %>
+  <p>
+    <%= f.label :text %>
+    <%= f.text_area :text %>
+  </p>
+  <%= f.submit %>
+<% end %>
