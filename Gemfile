@@ -6,16 +6,15 @@ gem 'rails', '4.0.0'
 # Use sqlite3 as the database for Active Record
 gem 'mysql2'
 
-group :assets do
-  # Use SCSS for stylesheets
-  gem 'sass-rails', '~> 4.0.0'
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 4.0.0'
 
-  # Use Uglifier as compressor for JavaScript assets
-  gem 'uglifier', '>= 1.3.0'
+# Use Uglifier as compressor for JavaScript assets
+gem 'uglifier', '>= 1.3.0'
 
-  # Use CoffeeScript for .js.coffee assets and views
-  gem 'coffee-rails', '~> 4.0.0'
-end
+# Use CoffeeScript for .js.coffee assets and views
+gem 'coffee-rails', '~> 4.0.0'
+
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -24,7 +23,7 @@ end
 gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -46,6 +45,7 @@ end
 group :test do
   gem 'capybara', '2.0.2'
   gem 'factory_girl_rails'
+  gem 'database_cleaner', '1.0.1'
 end
 
 # Use ActiveModel has_secure_password
