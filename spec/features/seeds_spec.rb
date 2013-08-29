@@ -3,10 +3,12 @@ require 'spec_helper'
 feature "Seed Data" do
   before do
     load Rails.root + "db/seeds.rb"
-    sign_in_as!(User.first)
+    a = User.first
+    a.password = "password"
+    sign_in_as!(a)
   end
 
-  scenario "The basics", js: true do
+  scenario "The basics" do
     click_link "Ticketee Beta"
     click_link "New Ticket"
     fill_in "Title", with: "Comments with state"

@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to [@ticket.project, @ticket], notice: "Added a comment!"
     else
+      @states = State.all #for the nested render
       flash.now[:alert] = "Comment has not been created."
       render :template => "tickets/show"
     end
