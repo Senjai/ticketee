@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :set_ticket
 
   def create
-    if cannot?(:"change states", @ticket.project) || !current_user.admin?
+    unless can?(:"change states", @ticket.project) || current_user.admin?
       params[:comment].delete(:state_id)
     end
     @comment = @ticket.comments.build(comment_params)
