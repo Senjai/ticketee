@@ -8,6 +8,7 @@ feature "Assigning permissions" do
   user: user) }
 
   before do
+    State.create!(name: "Open")
     sign_in_as!(admin)
     click_link "Admin"
     click_link "Users"
@@ -31,6 +32,7 @@ feature "Assigning permissions" do
     click_link "Sign out"
 
     sign_in_as!(user)
+
     click_link(project.name)
     click_link "New Ticket"
     fill_in "Title", with: "SJSIDFNKJSDN"
@@ -68,6 +70,25 @@ feature "Assigning permissions" do
     click_link "Delete Ticket"
 
     expect(page).to have_content("Ticket has been deleted.")
+  end
+
+  scenario "Changing states for a ticket", js: true do
+    check_permission_box "view", project
+    check_permission_box "change states", project
+    click_button "Update"
+    click_link "Sign out"
+
+    sign_in_as!(user)
+    click_link project.name
+    click_link ticket.title
+    fill_in "Text", with: "This is a real issue"
+    select "Open", from: "State"
+    click_button "Create Comment"
+
+    page.should have_content("Added a comment!")
+    within("#ticket .state") do
+      page.should have_content("Open")
+    end
   end
 
 end

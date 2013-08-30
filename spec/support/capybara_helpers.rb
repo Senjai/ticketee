@@ -8,7 +8,7 @@ module CapybaraHelpers
   end
 
   def check_permission_box(permission, object)
-    check "permissions_#{object.id}_#{permission}"
+    check "permissions_#{object.id}_#{permission.parameterize("_")}"
   end
 
   def state_line_for(state)
