@@ -3,12 +3,11 @@ class CommentsController < ApplicationController
   before_action :set_ticket
 
   def create
+    if cannot?(:"change states", @ticket.project) || !current_user.admin?
+      params[:comment].delete(:state_id)
+    end
     @comment = @ticket.comments.build(comment_params)
     @comment.user = current_user
-
-    if cannot?(:"change states", @ticket.project)
-      @comment.state_id = nil if @comment.state_id
-    end
 
     if @comment.save
       redirect_to [@ticket.project, @ticket], notice: "Added a comment!"

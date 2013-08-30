@@ -35,6 +35,7 @@
   def create
     @ticket = @project.tickets.new(ticket_params)
     @ticket.user_id = current_user.id
+    @ticket.state = State.where(default: true).first
     if @ticket.save
       redirect_to [@project, @ticket], notice: "Ticket has been created."
     else
