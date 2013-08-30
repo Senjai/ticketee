@@ -18,6 +18,23 @@ class Admin::StatesController < Admin::BaseController
     end
   end
 
+  def edit
+    @state = State.find(params[:id])
+  end
+
+  def update
+    @state = State.find(params[:id])
+
+    @state.update(state_params)
+    redirect_to admin_states_path
+  end
+
+  def destroy
+    @state = State.find(params[:id])
+    @state.destroy
+    redirect_to admin_states_path
+  end
+
   private
 
   def state_params
