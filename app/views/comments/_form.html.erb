@@ -5,9 +5,11 @@
     <%= f.label :text %>
     <%= f.text_area :text %>
   </p>
+  <%= authorized?(:"change states", @project) do %>
   <p>
     <%= f.label :state_id %>
     <%= f.select :state_id, @states.map {|s| [s.name, s.id]} %>
   </p>
+  <% end %>
   <%= f.submit %>
 <% end %>
