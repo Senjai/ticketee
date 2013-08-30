@@ -10,6 +10,11 @@ module CapybaraHelpers
   def check_permission_box(permission, object)
     check "permissions_#{object.id}_#{permission}"
   end
+
+  def state_line_for(state)
+    state = State.find_by_name!(state)
+    "#state_#{state.id}"
+  end
 end
 
 RSpec.configure do |c|
