@@ -33,6 +33,9 @@
   end
 
   def create
+    unless can?(:tag, @project) || current_user.admin?
+      params[:ticket].delete(:tag_names)
+    end
     @ticket = @project.tickets.new(ticket_params)
     @ticket.user_id = current_user.id
     @ticket.state = State.where(default: true).first
