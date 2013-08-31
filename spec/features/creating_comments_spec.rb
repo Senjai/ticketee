@@ -48,4 +48,20 @@ feature "Creating comments" do
     message = "Expected not to see #comment_state_id, but did."
     find_element.should(raise_error(Capybara::ElementNotFound), message)
   end
+
+  scenario "Adding a tag to a ticket" do
+    click_link ticket.title
+    within("#ticket #tags") do
+      page.should_not have_content("bug")
+    end
+
+    fill_in "Text", with: "Adding a bug tag"
+    fill_in "Tags", with: "bug"
+    click_button "Create Comment"
+
+    page.should have_content("Added a comment!")
+    within("#ticket #tags") do
+      page.should have_content("bug")
+    end
+  end
 end

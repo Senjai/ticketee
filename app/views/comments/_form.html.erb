@@ -11,5 +11,6 @@
     <%= f.select :state_id, @states.map {|s| [s.name, s.id]} %>
   </p>
   <% end %>
+  <%= render "tags/form", :f => f %>
   <%= f.submit %>
 <% end %>
