@@ -55,7 +55,7 @@
   end
 
   def search
-    @tickets = @project.tickets.search(params[:search]).to_a
+    @tickets = @project.tickets.search(params[:search]).uniq
     render "projects/show"
   end
 
