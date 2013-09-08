@@ -35,4 +35,14 @@ feature 'Searching' do
       page.should_not have_content("Create Users")
     end
   end
+
+  scenario "Clicking a tag will redirect to a list of tickets with that tag" do
+    click_link("Create Projects")
+    click_link("iteration_1")
+
+    within("#tickets") do
+      page.should have_content("Create Projects")
+      page.should_not have_content("Create Users")
+    end
+  end
 end
