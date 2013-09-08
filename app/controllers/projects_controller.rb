@@ -8,6 +8,7 @@ class ProjectsController < Admin::BaseController
   end
 
   def show
+    @tickets = @project.tickets
   end
 
   def new

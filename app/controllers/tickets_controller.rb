@@ -54,6 +54,11 @@
     redirect_to @project
   end
 
+  def search
+    @tickets = @project.tickets.search(params[:search]).to_a
+    render "projects/show"
+  end
+
   private
 
   def set_project

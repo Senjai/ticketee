@@ -5,7 +5,11 @@ Ticketee::Application.routes.draw do
   delete "/signout", to: "sessions#destroy", as: "signout"
 
   resources :projects do
-    resources :tickets
+    resources :tickets do
+      collection do
+        get :search
+      end
+    end
   end
 
   resources :tickets do
