@@ -4,7 +4,7 @@ feature "Ticket Notifications" do
   let!(:alice) {FactoryGirl.create(:user, :email => "alice@example.com")}
   let!(:bob) {FactoryGirl.create(:user, :email => "bob@example.com")}
   let!(:project) {FactoryGirl.create(:project)}
-  let!(:ticket) {FactoryGirl.create(:ticket, project: project, user: alice)}
+  let!(:ticket) {FactoryGirl.create(:ticket, project: project, user: bob)}
 
   before do
     ActionMailer::Base.deliveries.clear
