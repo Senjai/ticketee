@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'cancan', '1.6.9'
 gem 'carrierwave', '0.8.0'
+gem 'rails-observers'
 # gem 'searcher', git: "git@github.com:Senjai/searcher-1.git", branch: "ARupdate"
 
 group :doc do
