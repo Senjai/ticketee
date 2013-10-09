@@ -1,24 +1,26 @@
 require 'spec_helper'
 
 feature "Ticket Notifications" do
-  let!(:alice) {FactoryGirl.create(:user, :email => "alice@example.com")}
+  let!(:alice) {FactoryGirl.create(:user, :email => "alice@example.com", name: "Alice")}
   let!(:bob) {FactoryGirl.create(:user, :email => "bob@example.com")}
   let!(:project) {FactoryGirl.create(:project)}
-  let!(:ticket) {FactoryGirl.create(:ticket, project: project, user: bob)}
+  let!(:ticket) {FactoryGirl.create(:ticket, project: project, user: alice)}
 
   before do
     ActionMailer::Base.deliveries.clear
 
     define_permission!(alice, "view", project)
     define_permission!(bob, "view", project)
-
-    sign_in_as!(bob)
-    visit '/'
+    ticket.watchers << alice
   end
 
   scenario "Ticket owner receives Notifications about comments" do
+    sign_in_as! bob
+    visit '/'
+
     click_link project.name
     click_link ticket.title
+    binding.pry
     fill_in "Text", with: "Is it out yet?"
     click_button "Create Comment"
 
