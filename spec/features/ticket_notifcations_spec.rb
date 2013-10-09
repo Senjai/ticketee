@@ -11,7 +11,6 @@ feature "Ticket Notifications" do
 
     define_permission!(alice, "view", project)
     define_permission!(bob, "view", project)
-    ticket.watchers << alice
   end
 
   scenario "Ticket owner receives Notifications about comments" do
@@ -20,7 +19,6 @@ feature "Ticket Notifications" do
 
     click_link project.name
     click_link ticket.title
-    binding.pry
     fill_in "Text", with: "Is it out yet?"
     click_button "Create Comment"
 
