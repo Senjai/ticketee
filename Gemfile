@@ -50,6 +50,10 @@ group :test do
   gem 'email_spec'
 end
 
+group :production do
+  gem 'therubyracer'
+end
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -57,7 +61,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'unicorn'
 
 # Use Capistrano for deployment
- gem 'capistrano', '~> 2.0.0', group: :development
+ gem 'capistrano', '~> 2.15.4', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
