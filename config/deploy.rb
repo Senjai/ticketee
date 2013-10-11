@@ -13,7 +13,7 @@ set :repository,  "git@github.com:Senjai/ticketee.git"
 set :scm, :git
 
 set :user, "ticketee"
-set :deploy_to, "/home/ticketeeapp.com/apps/#{application}"
+set :deploy_to, "/home/ticketee/apps/#{application}"
 set :use_sudo, false
 set :keep_releases, 5
 
