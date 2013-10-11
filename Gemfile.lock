@@ -194,6 +194,7 @@ DEPENDENCIES
   database_cleaner (= 1.0.1)
   email_spec
   factory_girl_rails
+  i18n (~> 0.6.5)
   jbuilder (~> 1.2)
   jquery-rails
   mysql2
